@@ -12,7 +12,7 @@ def home():
     
     
     
-    return render_template('index.html', day_of_week=day_of_week, current_time=current_time)
+    return render_template('index.html', day_of_week=day_of_week)
 
 @app.route('/time')
 def time():
