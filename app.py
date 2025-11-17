@@ -10,11 +10,15 @@ def home():
     
     day_of_week = datetime.today().strftime('%A') + datetime.today().strftime(', %B %d, %Y')
     
-    current_time = datetime.today().strftime(' - %I:%M %p')
+    
     
     return render_template('index.html', day_of_week=day_of_week, current_time=current_time)
 
-
+@app.route('/time')
+def time():
+    current_time = datetime.today().strftime(' - %I:%M %p')
+    
+    return current_time
 
 if __name__ == '__main__':
 
