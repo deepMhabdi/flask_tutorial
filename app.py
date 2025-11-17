@@ -1,24 +1,20 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 app = Flask(__name__)
+
+from datetime import datetime
+datetime.today().strftime('%A')
+'Monday'
 
 @app.route('/')
 def home():
-    return "Welcome to the Home Page!"
+    
+    day_of_week = datetime.today().strftime('%A') + datetime.today().strftime(', %B %d, %Y')
+    
+    current_time = datetime.today().strftime(' - %I:%M %p')
+    
+    return render_template('index.html', day_of_week=day_of_week, current_time=current_time)
 
-@app.route('/api')
-def name():
-    
-    name = request.values.get('name')
-    age = request.values.get('age')
-    
-    age = int(age)
-    name = str(name)
-    
-    if age > 18:
-        return "Welcome to the site,  " + name + "!"
-    
-    else: 
-        return "Sorry, " + name + " you are too young to use this site"
+
 
 if __name__ == '__main__':
 
