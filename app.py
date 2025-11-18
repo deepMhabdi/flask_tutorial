@@ -20,6 +20,11 @@ def time():
     
     return current_time
 
+@app.route('/submit')
+def submit():
+    name = request.args.get('name')
+    return "Hello, " + name + '!'
+
 if __name__ == '__main__':
 
     app.run(debug=True)
