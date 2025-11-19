@@ -13,19 +13,19 @@
     <p>The time is {{ current_time }}</p>
 
     <div class="centered">
-        <form action="/submit">
+        <form action="/submit" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="Enter your name">
-            <!-- <br>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="Enter your email">
-        <br>
-        <label for="password">Password</label>
-        <input type="password" name="paswword" id="password" placeholder="Enter your password">
-        <br>
-        <label for="confirm_password">Confirm Password</label>
-        <input type="password" name="confirm_password" id="confirm_password" placeholder="confirm_password">
-        <br> -->
+            <br>
+            <!-- <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email"> -->
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="paswword" id="password" placeholder="Enter your password">
+            <br>
+            <!-- <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="confirm_password"> -->
+            <br>
             <input type="submit" value="Submit">
         </form>
     </div>
@@ -34,17 +34,17 @@
 </body>
 <style>
     body {
-        background-color: black;
+        background-color: whitesmoke;
     }
 
     p {
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 30px;
-        color: yellow;
+        color: black;
     }
 
-    .centered{
+    .centered {
         display: flex;
         justify-content: center;
         align-items: center;
