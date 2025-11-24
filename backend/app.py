@@ -1,7 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request
 import os
 from dotenv import load_dotenv
-from datetime import datetime
 from pymongo.mongo_client import MongoClient
 
 app = Flask(__name__)
@@ -25,10 +24,6 @@ except Exception as e:
 db = client["flask_database"]     
 collection = db["form_data"]      
 
-@app.route('/')
-def home():
-    day_of_week = datetime.today().strftime('%A, %B %d, %Y')
-    return render_template('index.html', day_of_week=day_of_week)
 
 @app.route('/submit', methods=['POST'])
 def submit():
