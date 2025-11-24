@@ -1,7 +1,8 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import os
 from dotenv import load_dotenv
 from pymongo.mongo_client import MongoClient
+from bson import ObjectId
 
 app = Flask(__name__)
 
@@ -24,31 +25,17 @@ except Exception as e:
 db = client["flask_database"]     
 collection = db["form_data"]      
 
-
 @app.route('/submit', methods=['POST'])
 def submit():
-    form_data = dict(request.form)
+    form_data = dict(request.json)
     collection.insert_one(form_data)
-    return "Data submitted successfully"
+    return jsonify({"message": "Data sent successfully"})
 
 @app.route('/view')
 def view():
-    
-    data = collection.find()
-    
-    data = list(data)
-    
-    for item in data: 
-    
-        print(item)
-        
-        del item['_id']
-        
-    data = {
-        'data': data
-    }
-    
-    return data
+    data = list(collection.find({}, {"_id": 0}))
+    return jsonify({"data": data})
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=9000, debug=True)
